@@ -9,7 +9,7 @@
     width: 95%;
     height: 75vh;
     background-color: aliceblue;
-    max-width: 1350px;
+    max-width: 1000px;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
 }
