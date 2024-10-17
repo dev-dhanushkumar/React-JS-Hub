@@ -143,6 +143,10 @@
     cursor: pointer;
 }
 
+.video {
+    cursor: pointer;
+}
+
 @media (max-width: 900px) {
     .chat-box {
         width: 100%;

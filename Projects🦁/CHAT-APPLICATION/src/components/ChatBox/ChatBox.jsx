@@ -12,10 +12,22 @@ import {
 import { db } from "../../config/firebase";
 import { toast } from "react-toastify";
 import upload from "../../lib/upload";
+import { useNavigate } from "react-router-dom";
 
 const ChatBox = () => {
-  const { userData, messagesId, chatUser, messages, setMessages, chatVisible, setChatVisible, setIsExpanded, isExpanded } =
-    useContext(AppContext);
+  const {
+    userData,
+    messagesId,
+    chatUser,
+    messages,
+    setMessages,
+    chatVisible,
+    setChatVisible,
+    setIsExpanded,
+    isExpanded,
+    setCallStatus,
+    setActiveCall
+  } = useContext(AppContext);
 
   const [input, setInput] = useState("");
 
@@ -115,16 +127,50 @@ const ChatBox = () => {
     }
   }, [messagesId]);
 
+  // const {  } = useContext(VideoCallContext);
+  const navigate = useNavigate();
+  const initiateCall = () => {
+    const recipientId = chatUser.userData.id;
+    // console.log("Sender ID: ",userData.id);
+    // console.log("Reciver ID: ",recipientId);
+    const recipientName = chatUser.userData.name;
+    setActiveCall({
+      recipientId: recipientId , // Here Change the ID
+      recipientName: recipientName, // Here change the Sender Name
+      type: "outgoing",
+    });
+    setCallStatus("calling");
+    navigate("/video")
+  };
+
   return chatUser ? (
-    <div className={`chat-box ${chatVisible? "": "hidden"}`}>
+    <div className={`chat-box ${chatVisible ? "" : "hidden"}`}>
       <div className="chat-user">
         <img src={chatUser.userData.avatar} alt="" />
         <p>
           {chatUser.userData.name}
-          {Date.now() - chatUser.userData.lastseen <= 70000? <img className="dot" src={assets.green_dot} alt="" />: null}
+          {Date.now() - chatUser.userData.lastseen <= 70000 ? (
+            <img className="dot" src={assets.green_dot} alt="" />
+          ) : null}
         </p>
-        <img onClick={()=> setIsExpanded(!isExpanded)} src={assets.arrow_icon} className="help" alt="" />
-        <img onClick={()=> setChatVisible(false)} src={assets.arrow_icon} className="arrow" alt="" />
+        <img
+          onClick={() => initiateCall()}
+          src={assets.video_call}
+          className="video"
+          alt="video call"
+        />
+        <img
+          onClick={() => setIsExpanded(!isExpanded)}
+          src={assets.arrow_icon}
+          className="help"
+          alt=""
+        />
+        <img
+          onClick={() => setChatVisible(false)}
+          src={assets.arrow_icon}
+          className="arrow"
+          alt=""
+        />
       </div>
 
       <div className="chat-msg">
@@ -174,7 +220,7 @@ const ChatBox = () => {
       </div>
     </div>
   ) : (
-    <div className={`chat-welcome ${chatVisible? "": "hidden"}`}>
+    <div className={`chat-welcome ${chatVisible ? "" : "hidden"}`}>
       <img src={assets.logo_icon} alt="" />
       <p>Chat anytime, anywhare</p>
     </div>
