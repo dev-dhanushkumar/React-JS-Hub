@@ -6,7 +6,7 @@ import RightSidebar from "../../components/RightSidebar/RightSidebar";
 import { AppContext } from "../../context/AppContext";
 
 const Chat = () => {
-  const { chatData, userData } = useContext(AppContext);
+  const { chatData, userData, isExpanded } = useContext(AppContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(()=> {
@@ -20,7 +20,7 @@ const Chat = () => {
       {loading ? (
         <p className="loading">Loading...</p>
       ) : (
-        <div className="chat-container">
+        <div className={`${isExpanded ? "expanded" : "chat-container"}`}>
           <LeftSidebar />
           <ChatBox />
           <RightSidebar />
