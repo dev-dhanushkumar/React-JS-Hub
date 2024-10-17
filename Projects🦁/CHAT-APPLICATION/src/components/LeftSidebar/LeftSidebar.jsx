@@ -47,7 +47,7 @@ const LeftSidebar = () => {
           let userExist = false;
           chatData.map((user) => {
             if (user.rId === querySnap.docs[0].data().id) {
-              userData = true;
+              userExist = true;
             }
           });
           if (!userExist) {
