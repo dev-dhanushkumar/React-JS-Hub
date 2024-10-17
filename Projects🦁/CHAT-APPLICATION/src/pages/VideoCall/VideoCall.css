@@ -1,0 +1,87 @@
+/* VideoCall.css */
+
+.video-call-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-call-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 56rem; /* 4xl - approximate conversion */
+}
+
+.video-grid {
+  position: relative;
+  aspect-ratio: 16/9;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.video-wrapper {
+  position: relative;
+}
+
+.video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.video-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.video-label p {
+  color: white;
+  font-size: 0.875rem; /* text-sm */
+}
+
+.call-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.call-button {
+  padding: 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer-button {
+  background-color: #22c55e; /* bg-green-500 */
+}
+
+.answer-button:hover {
+  background-color: #16a34a; /* bg-green-600 */
+}
+
+.end-button {
+  background-color: #ef4444; /* bg-red-500 */
+}
+
+.end-button:hover {
+  background-color: #dc2626; /* bg-red-600 */
+}
+
+.call-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
