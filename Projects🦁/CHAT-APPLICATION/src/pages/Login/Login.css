@@ -73,4 +73,15 @@
         justify-content: center;
         gap: 30px;
     }
+
+    .login-form {
+        min-width: 300px ;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .login .logo {
+        width: max(10vw, 100px);
+    }
+    
 }

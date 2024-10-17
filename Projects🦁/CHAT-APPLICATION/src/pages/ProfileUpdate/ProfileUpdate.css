@@ -64,3 +64,31 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+@media (max-width:900px) {
+    .profile-container {
+        min-width: 600px;
+    }    
+}
+
+@media (max-width:620px) {
+    .profile-container {
+        min-width: 350px;
+        
+    }    
+
+    .profile-pic {
+        display: none;
+    }
+}
+
+@media (max-width:490px) {
+    .profile-container {
+        min-width: 200px;
+        
+    }    
+
+    .profile-pic {
+        display: none;
+    }
+}
