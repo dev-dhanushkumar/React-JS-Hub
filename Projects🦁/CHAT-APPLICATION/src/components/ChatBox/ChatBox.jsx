@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import upload from "../../lib/upload";
 
 const ChatBox = () => {
-  const { userData, messagesId, chatUser, messages, setMessages, chatVisible, setChatVisible } =
+  const { userData, messagesId, chatUser, messages, setMessages, chatVisible, setChatVisible, setIsExpanded, isExpanded } =
     useContext(AppContext);
 
   const [input, setInput] = useState("");
@@ -123,7 +123,7 @@ const ChatBox = () => {
           {chatUser.userData.name}
           {Date.now() - chatUser.userData.lastseen <= 70000? <img className="dot" src={assets.green_dot} alt="" />: null}
         </p>
-        <img src={assets.help_icon} className="help" alt="" />
+        <img onClick={()=> setIsExpanded(!isExpanded)} src={assets.arrow_icon} className="help" alt="" />
         <img onClick={()=> setChatVisible(false)} src={assets.arrow_icon} className="arrow" alt="" />
       </div>
 
