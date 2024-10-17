@@ -17,6 +17,11 @@ const AppContextProvider = (props) => {
     const [chatVisible, setChatVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
+    const [callStatus, setCallStatus] = useState("idle");
+    const [activeCall, setActiveCall] = useState(null);
+    const [localStream, setLocalStream] = useState(null);
+    const [remoteStream, setRemoteStream] = useState(null);
+
     const loadUserData = async (uid) => {
         try {
             const userRef = doc(db,'users', uid);
@@ -73,7 +78,11 @@ const AppContextProvider = (props) => {
         messagesId, setMessagesId,
         chatUser, setChatUser,
         chatVisible, setChatVisible,
-        isExpanded, setIsExpanded
+        isExpanded, setIsExpanded,
+        callStatus, setCallStatus,
+        activeCall, setActiveCall,
+        localStream, setLocalStream,
+        remoteStream, setRemoteStream
     }
 
     return(
